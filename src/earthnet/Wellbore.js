@@ -3,6 +3,7 @@ import Dashboard from '../layouts/Dashboard/Dashboard';
 import { Grid } from '@material-ui/core';
 import WellsList from '../layouts/components/Lists/WellsList';
 import LogsList from '../layouts/components/Lists/LogsList';
+import FormationsList from '../layouts/components/Lists/FormationsList';
 
 export default function Wellbore() {
   return (
@@ -11,6 +12,7 @@ export default function Wellbore() {
 			<Grid item xs={12} md={5} container spacing={2}>
       			<WellsList/>
       			<LogsList/>
+      			<FormationsList/>
   			</Grid>
 		</Grid>
     </Dashboard>
