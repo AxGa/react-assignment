@@ -1,6 +1,7 @@
 export const FETCH_WELLS_BEGIN   = 'FETCH_WELLS_BEGIN';
 export const FETCH_WELLS_SUCCESS = 'FETCH_WELLS_SUCCESS';
 export const FETCH_WELLS_FAILURE = 'FETCH_WELLS_FAILURE';
+export const SELECT_WELL = 'SELECT_WELL';
 
 export function fetchWells(){
 	return dispatch => {
@@ -37,3 +38,10 @@ export const fetchWellsFailure = error => ({
 	type: FETCH_WELLS_FAILURE,
 	payload: error
 })
+
+export function selectWell(payload) {
+  return {
+    type: SELECT_WELL,
+    payload
+  }
+}

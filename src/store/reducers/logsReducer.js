@@ -1,9 +1,10 @@
-import { FETCH_LOGS_BEGIN, FETCH_LOGS_SUCCESS, FETCH_LOGS_FAILURE } from '../actions/logsActions';
+import { FETCH_LOGS_BEGIN, FETCH_LOGS_SUCCESS, FETCH_LOGS_FAILURE, SELECT_LOG } from '../actions/logsActions';
 
 const initialState = {
 	items: [],
 	loading: false,
-	error: null
+	error: null,
+	selectedLogs: []
 };
 
 export default function logsReducer( state = initialState, action){
@@ -34,6 +35,12 @@ export default function logsReducer( state = initialState, action){
 			  error: action.payload.error,
 			  items: []
 			};
+
+		case SELECT_LOG:
+			return {
+				...state,
+				selectedLogs: action.payload
+			}
 
 		default:
 			return state;

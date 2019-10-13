@@ -1,9 +1,10 @@
-import { FETCH_WELLS_BEGIN, FETCH_WELLS_SUCCESS, FETCH_WELLS_FAILURE } from '../actions/wellsActions';
+import { FETCH_WELLS_BEGIN, FETCH_WELLS_SUCCESS, FETCH_WELLS_FAILURE, SELECT_WELL } from '../actions/wellsActions';
 
 const initialState = {
 	items: [],
 	loading: false,
-	error: null
+	error: null,
+	selectedWells: []
 };
 
 export default function wellsReducer( state = initialState, action){
@@ -34,6 +35,12 @@ export default function wellsReducer( state = initialState, action){
 			  error: action.payload.error,
 			  items: []
 			};
+
+		case SELECT_WELL:
+			return {
+				...state,
+				selectedWells: action.payload
+			}
 
 		default:
 			return state;

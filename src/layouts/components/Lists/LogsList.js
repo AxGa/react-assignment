@@ -1,6 +1,6 @@
 import React, { useState, useEffect }from "react";
 import { connect } from "react-redux";
-import { fetchLogs } from "../../../store/actions/logsActions";
+import { fetchLogs, selectLog } from "../../../store/actions/logsActions";
 import { makeStyles, Grid, List, ListItem, ListItemText } from '@material-ui/core';
 import {
   Portlet,
@@ -63,6 +63,7 @@ const LogsList = (props) => {
         newSelectedOptions.splice(currentIndex, 1);
       }
       setSelect(newSelectedOptions);
+      props.dispatch(selectLog(newSelectedOptions));
     };
 
     const isSelected = value => selectedOptions.includes(value);

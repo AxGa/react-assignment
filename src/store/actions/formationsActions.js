@@ -1,6 +1,7 @@
 export const FETCH_FORMATIONS_BEGIN   = 'FETCH_FORMATIONS_BEGIN';
 export const FETCH_FORMATIONS_SUCCESS = 'FETCH_FORMATIONS_SUCCESS';
 export const FETCH_FORMATIONS_FAILURE = 'FETCH_FORMATIONS_FAILURE';
+export const SELECT_FORMATION = 'SELECT_FORMATION';
 
 export function fetchFormations(){
 	return dispatch => {
@@ -36,4 +37,9 @@ export const fetchFormationsSuccess = items => ({
 export const fetchFormationsFailure = error => ({
 	type: FETCH_FORMATIONS_FAILURE,
 	payload: error
+})
+
+export const selectFormation = payload => ({
+	type: SELECT_FORMATION,
+	payload
 })

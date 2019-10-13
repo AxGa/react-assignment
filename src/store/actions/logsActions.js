@@ -1,6 +1,7 @@
 export const FETCH_LOGS_BEGIN   = 'FETCH_LOGS_BEGIN';
 export const FETCH_LOGS_SUCCESS = 'FETCH_LOGS_SUCCESS';
 export const FETCH_LOGS_FAILURE = 'FETCH_LOGS_FAILURE';
+export const SELECT_LOG = 'SELECT_LOG';
 
 export function fetchLogs(){
 	return dispatch => {
@@ -36,4 +37,9 @@ export const fetchLogsSuccess = items => ({
 export const fetchLogsFailure = error => ({
 	type: FETCH_LOGS_FAILURE,
 	payload: error
+})
+
+export const selectLog = (payload) => ({
+	type: SELECT_LOG,
+	payload
 })

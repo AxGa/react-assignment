@@ -1,9 +1,10 @@
-import { FETCH_FORMATIONS_BEGIN, FETCH_FORMATIONS_SUCCESS, FETCH_FORMATIONS_FAILURE } from '../actions/formationsActions';
+import { FETCH_FORMATIONS_BEGIN, FETCH_FORMATIONS_SUCCESS, FETCH_FORMATIONS_FAILURE, SELECT_FORMATION } from '../actions/formationsActions';
 
 const initialState = {
 	items: [],
 	loading: false,
-	error: null
+	error: null,
+	selectedFormations: []
 };
 
 export default function formationsReducer( state = initialState, action){
@@ -34,6 +35,12 @@ export default function formationsReducer( state = initialState, action){
 			  error: action.payload.error,
 			  items: []
 			};
+
+		case SELECT_FORMATION:
+			return {
+				...state,
+				selectedFormations: action.payload
+			}
 
 		default:
 			return state;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect }from "react";
 import { connect } from "react-redux";
-import { fetchWells } from "../../../store/actions/wellsActions";
+import { fetchWells, selectWell } from "../../../store/actions/wellsActions";
 import { makeStyles, Grid, List, ListItem, ListItemText } from '@material-ui/core';
 import {
   Portlet,
@@ -63,6 +63,7 @@ const WellsList = (props) => {
         newSelectedOptions.splice(currentIndex, 1);
       }
       setSelect(newSelectedOptions);
+      props.dispatch(selectWell(newSelectedOptions));
     };
 
     const isSelected = value => selectedOptions.includes(value);

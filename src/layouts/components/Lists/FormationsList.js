@@ -1,6 +1,6 @@
 import React, { useState, useEffect }from "react";
 import { connect } from "react-redux";
-import { fetchFormations } from "../../../store/actions/formationsActions";
+import { fetchFormations, selectFormation } from "../../../store/actions/formationsActions";
 import { makeStyles, Grid, List, ListItem, ListItemText } from '@material-ui/core';
 import {
   Portlet,
@@ -64,6 +64,7 @@ const FormationsList = (props) => {
         newSelectedOptions.splice(currentIndex, 1);
       }
       setSelect(newSelectedOptions);
+      props.dispatch(selectFormation(newSelectedOptions));
     };
 
     const isSelected = value => selectedOptions.includes(value);
