@@ -6,7 +6,8 @@ import {
   Portlet,
   PortletHeader,
   PortletLabel,
-  PortletContent
+  PortletContent,
+  EsaButton
 } from '../';
 
 const styles = theme => ({
@@ -28,7 +29,7 @@ const styles = theme => ({
   },
   portletContent: {
     height: 0,
-    minHeight: 550,
+    minHeight: 490,
     display: 'flex',
     flexDirection: 'column'
   },
@@ -100,6 +101,9 @@ const FormationsList = (props) => {
             </List>
           </PortletContent>
         </Portlet>
+        <EsaButton fullWidth className={classes.button} disabled>
+          Show Plot
+        </EsaButton>
       </Grid>
     );
 }
