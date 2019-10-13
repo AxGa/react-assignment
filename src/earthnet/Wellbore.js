@@ -35,6 +35,10 @@ const useStyles = makeStyles(styles);
 export default function Wellbore() {
     const classes = useStyles();
     const apiData = store.getState().wells.plotData;
+    for(let i=0; i < apiData.length; i++){
+        apiData[i].name = `wellId-${apiData[i].wellId}`;
+        apiData[i].type = 'scatter';
+    }
 
     return (
     <Dashboard>
