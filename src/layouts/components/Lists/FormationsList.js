@@ -9,6 +9,7 @@ import {
   PortletContent,
   EsaButton
 } from '../';
+import store from "../../../store/index";
 
 const styles = theme => ({
   root: {
@@ -68,6 +69,13 @@ const FormationsList = (props) => {
     };
 
     const isSelected = value => selectedOptions.includes(value);
+    
+    const isDisabled = () => {
+      if(store.getState().formations.selectedFormations.length !== 0 && store.getState().wells.selectedWells.length !== 0 && store.getState().logs.selectedLogs.length !== 0){
+        return false;
+      }
+      else return true;
+    }
 
     const { error, loading, formations } = props;
   
@@ -102,7 +110,7 @@ const FormationsList = (props) => {
             </List>
           </PortletContent>
         </Portlet>
-        <EsaButton fullWidth className={classes.button} disabled>
+        <EsaButton fullWidth className={classes.button} disabled={isDisabled()}>
           Show Plot
         </EsaButton>
       </Grid>
