@@ -40,11 +40,12 @@ const useStyles = makeStyles(styles);
 
 export default function Histogram() {
     const classes = useStyles();
-    const [barModeValue, onChangeBarMode] = useState('1');
-    const [orientationValue, onChangeOrientation] = useState('2');
+    const [barModeValue, onChangeBarMode] = useState('group');
+    const [orientationValue, onChangeOrientation] = useState('v');
     const apiData = store.getState().wells.plotData;
     for(let i=0; i < apiData.length; i++){
         apiData[i].name = `wellId-${apiData[i].wellId}`;
+        apiData[i].orientation = orientationValue;
         apiData[i].type = 'histogram';
     }
 
@@ -61,8 +62,8 @@ export default function Histogram() {
                               label="Bar Mode"
                               value={barModeValue}
                               options={[
-                                { key: 'group', value: '1', text: 'group' },
-                                { key: 'stack', value: '2', text: 'stack' }
+                                { key: 'group', value: 'group', text: 'group' },
+                                { key: 'stack', value: 'stack', text: 'stack' }
                               ]}
                               onChange={value => onChangeBarMode(value)}
                             />
@@ -72,8 +73,8 @@ export default function Histogram() {
                               label="Orientation"
                               value={orientationValue}
                               options={[
-                                { key: 'vertical', value: '1', text: 'Vertical' },
-                                { key: 'horizontal', value: '2', text: 'Horizontal' }
+                                { key: 'vertical', value: 'v', text: 'Vertical' },
+                                { key: 'horizontal', value: 'h', text: 'Horizontal' }
                               ]}
                               onChange={value => onChangeOrientation(value)}
                             />
@@ -89,7 +90,7 @@ export default function Histogram() {
             <Grid item xs={12} md={7}>
                 {store.getState().wells.plotData.length !== 0 ?
                     <div className={classes.plotContainer}>
-                      <WellsPlot plotData={apiData}/>
+                      <WellsPlot plotData={apiData} barMode={barModeValue}/>
                     </div> : 
                     <div className={classes.logoContainer}>
                       <EsaLogo />

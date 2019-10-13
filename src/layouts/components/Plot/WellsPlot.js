@@ -7,7 +7,7 @@ export const WellsPlot = (props) => {
         data={props.plotData}
         useResizeHandler
         style={{ width: '100%', height: '100%' }}
-        layout={{autosize: true, title: 'Wells Plot'}}
+        layout={{autosize: true, title: 'Wells Plot', barmode:props.barMode}}
       />
     );
 }
