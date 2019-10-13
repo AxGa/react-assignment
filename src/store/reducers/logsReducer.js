@@ -13,27 +13,27 @@ export default function logsReducer( state = initialState, action){
 			// state = "loading" so we can add a preloader
 			// reset errors
 			return {
-			  ...state,
-			  loading: true,
-			  error: null
+				...state,
+				loading: true,
+				error: null
 			};
 
 		case FETCH_LOGS_SUCCESS:
 			// add the fetched data to items
 			return {
-			  ...state,
-			  loading: false,
-			  items: action.payload.items
+				...state,
+				loading: false,
+				items: action.payload.items
 			};
 
 		case FETCH_LOGS_FAILURE:
 			// Request failed.
 			// Save the error.
 			return {
-			  ...state,
-			  loading: false,
-			  error: action.payload.error,
-			  items: []
+				...state,
+				loading: false,
+				error: action.payload.error,
+				items: []
 			};
 
 		case SELECT_LOG:

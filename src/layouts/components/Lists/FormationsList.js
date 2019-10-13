@@ -10,6 +10,7 @@ import {
   EsaButton
 } from '../';
 import store from "../../../store/index";
+import { fetchWellsPlot } from "../../../store/actions/wellsActions";
 
 const styles = theme => ({
   root: {
@@ -77,6 +78,10 @@ const FormationsList = (props) => {
       else return true;
     }
 
+    const showPlot = () =>{
+      props.dispatch(fetchWellsPlot(store.getState().wells.selectedWells));
+    }
+
     const { error, loading, formations } = props;
   
     if (error) {
@@ -110,7 +115,7 @@ const FormationsList = (props) => {
             </List>
           </PortletContent>
         </Portlet>
-        <EsaButton fullWidth className={classes.button} disabled={isDisabled()}>
+        <EsaButton fullWidth className={classes.button} disabled={isDisabled()} onClick={() => showPlot()}>
           Show Plot
         </EsaButton>
       </Grid>
