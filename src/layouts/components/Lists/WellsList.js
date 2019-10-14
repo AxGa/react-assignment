@@ -8,6 +8,7 @@ import {
   PortletLabel,
   PortletContent
 } from '../';
+import store from "../../../store/index";
 
 const styles = theme => ({
   root: {
@@ -53,10 +54,11 @@ const WellsList = (props) => {
 
     const classes = useStyles();
     const [selectedOptions, setSelect] = useState([]);
+    const storeSelectedOptions = store.getState().wells.selectedWells;
 
     const handleSelect = value => {
-      const currentIndex = selectedOptions.indexOf(value);
-      const newSelectedOptions = [...selectedOptions];
+      const currentIndex = storeSelectedOptions.indexOf(value);
+      const newSelectedOptions = [...storeSelectedOptions];
       if (currentIndex === -1) {
         newSelectedOptions.push(value);
       } else {
@@ -66,7 +68,7 @@ const WellsList = (props) => {
       props.dispatch(selectWell(newSelectedOptions));
     };
 
-    const isSelected = value => selectedOptions.includes(value);
+    const isSelected = value => storeSelectedOptions.includes(value);
 
     const { error, loading, wells } = props;
   

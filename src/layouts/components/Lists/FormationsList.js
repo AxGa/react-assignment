@@ -56,10 +56,11 @@ const FormationsList = (props) => {
 
     const classes = useStyles();
     const [selectedOptions, setSelect] = useState([]);
+    const storeSelectedOptions = store.getState().formations.selectedFormations;
 
     const handleSelect = value => {
-      const currentIndex = selectedOptions.indexOf(value);
-      const newSelectedOptions = [...selectedOptions];
+      const currentIndex = storeSelectedOptions.indexOf(value);
+      const newSelectedOptions = [...storeSelectedOptions];
       if (currentIndex === -1) {
         newSelectedOptions.push(value);
       } else {
@@ -69,7 +70,7 @@ const FormationsList = (props) => {
       props.dispatch(selectFormation(newSelectedOptions));
     };
 
-    const isSelected = value => selectedOptions.includes(value);
+    const isSelected = value => storeSelectedOptions.includes(value);
     
     const isDisabled = () => {
       if(store.getState().formations.selectedFormations.length !== 0 && store.getState().wells.selectedWells.length !== 0 && store.getState().logs.selectedLogs.length !== 0){
