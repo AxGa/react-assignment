@@ -7,6 +7,9 @@ export default theme => ({
     textTransform: 'inherit',
     '&:hover': {
       backgroundColor: theme.palette.default.light
+    },
+    '&.active':{
+      backgroundColor: theme.palette.default.light
     }
   },
   activeListItem: {

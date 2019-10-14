@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles, ListItem, ListItemText } from '@material-ui/core';
 import classnames from 'classnames';
 import styles from './styles';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 const useStyles = makeStyles(styles);
 
 const NavItem = ({ active, to, title }) => {
@@ -15,7 +15,7 @@ const NavItem = ({ active, to, title }) => {
         [classes.navItem]: true,
         [classes.activeListItem]: active
       })}
-      component={Link}
+      component={NavLink}
       to={to}
     >
       <ListItemText classes={{ primary: classes.listItemText }} primary={title} />
